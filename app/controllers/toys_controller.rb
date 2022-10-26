@@ -14,6 +14,9 @@ class ToysController < ApplicationController
   def update
     toy = Toy.find_by(id: params[:id])
     toy.update(toy_params)
+    # NOTE: This fixed the issue by not returning JSON 
+    # from the backend to the frontend:
+    render json: toy
   end
 
   def destroy
